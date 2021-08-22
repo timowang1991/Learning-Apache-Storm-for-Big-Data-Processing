@@ -1,4 +1,4 @@
-package com.packt.stormtraining;
+package first.storm.topology;
 
 import org.apache.storm.task.OutputCollector;
 import org.apache.storm.task.TopologyContext;

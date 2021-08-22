@@ -1,7 +1,6 @@
-package com.packt.stormtraining;
+package first.storm.topology;
 
 import org.apache.storm.Config;
-import org.apache.storm.LocalCluster;
 import org.apache.storm.StormSubmitter;
 import org.apache.storm.topology.TopologyBuilder;
 
@@ -21,7 +20,7 @@ public class SquareStormTopology {
         StormSubmitter cluster = new StormSubmitter();
 
         try {
-            cluster.submitTopology("square-storm-topology", config, builder.createTopology());
+            cluster.submitTopology("first_storm_topology", config, builder.createTopology());
         } catch (Exception e) {
             System.out.println("exception occurred when submitting topology: " + e.getMessage());
         }
