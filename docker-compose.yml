@@ -1,0 +1,56 @@
+version: '3.6'
+
+services:
+  maven:
+    image: maven:3.8-openjdk-11
+    container_name: maven
+    command: sleep infinity
+    working_dir: /src
+    volumes:
+      - ./:/src
+      - ~/.m2:/root/.m2
+
+  zookeeper:
+    image: zookeeper
+    container_name: zookeeper
+    restart: always
+
+  nimbus:
+    image: storm
+    container_name: nimbus
+    command: storm nimbus
+    depends_on:
+      - zookeeper
+    links:
+      - zookeeper
+    restart: always
+    ports:
+      - 6627:6627
+    volumes:
+      - ./:/src
+
+  supervisor:
+    image: storm
+    container_name: supervisor
+    command: storm supervisor
+    depends_on:
+      - nimbus
+      - zookeeper
+    links:
+      - nimbus
+      - zookeeper
+    restart: always
+    volumes:
+      - ./supervisor/storm.yaml:/conf/storm.yaml
+
+  ui:
+    image: storm
+    container_name: ui
+    command: storm ui
+    depends_on:
+      - nimbus
+    links:
+      - nimbus
+    restart: always
+    ports:
+      - 8080:8080
