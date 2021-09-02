@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>first_storm_topology</module>
+        <module>shuffle_grouping</module>
     </modules>
 
     <properties>
