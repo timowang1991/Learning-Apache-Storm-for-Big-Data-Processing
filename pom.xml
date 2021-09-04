@@ -13,6 +13,7 @@
         <module>shuffle_grouping</module>
         <module>all_grouping</module>
         <module>custom_grouping</module>
+        <module>direct_grouping</module>
     </modules>
 
     <properties>
