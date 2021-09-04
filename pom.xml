@@ -12,6 +12,7 @@
         <module>first_storm_topology</module>
         <module>shuffle_grouping</module>
         <module>all_grouping</module>
+        <module>custom_grouping</module>
     </modules>
 
     <properties>
